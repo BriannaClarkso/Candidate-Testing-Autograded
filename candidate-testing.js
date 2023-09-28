@@ -16,6 +16,7 @@ let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
 let candidateAnswers = [];
 
 
+
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
   candidateName = input.question("Please enter your name?");
@@ -31,22 +32,45 @@ function askQuestion() {
 };
 
 function gradeQuiz(candidateAnswers) {
-
+  let grade = 0;
+  let numOfCorrectAnswers = 0;
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-if (correctAnswer === candidateAnswer){
-  console.log(`Candidate's correct response is ${candidateAnswer} and the correct response was ${question}`);
-} else {
-  console.log(`Candidate's incorrect response is ${candidateAnswer} and the correct response was ${question}`);
+  
+  for(let i = 0; i < candidateAnswers.length; i++){
+    if ((correctAnswers[i]).toLowerCase() === (candidateAnswers[i]).toLowerCase()){
+      console.log(`Candidate's correct response is ${candidateAnswers[i]} and the correct response was ${correctAnswers[i]}`);
+    } else {
+      console.log(`Candidate's incorrect response is ${candidateAnswers[i]} and the correct response was ${correctAnswers[i]}`);
+  }
 }
 
-//a template literal that displays each of the candidate’s responses in addition to the corresponding correct answers.
+  for(let i = 0; i < candidateAnswers.length; i++){
+
+    if ((correctAnswers[i]).toLowerCase() === (candidateAnswers[i]).toLowerCase()){
+      numOfCorrectAnswers += 1
+      grade = (numOfCorrectAnswers / questions.length) * 100;  
+
+    }
+  }
 
 
-  let grade;  //TODO 3.2 use this variable to calculate the candidates score.
+
+  if (grade >= 80){
+    console.log(`Congrulations, you have passed with a ${grade}!`);
+  } else {
+    console.log(`You have failed with a ${grade}, better luck next time.`)
+  }
 
 
   return grade;
-}
+ }
+
+
+// Calculate the candidate’s score as a percentage,
+
+
+
+
 
 function runProgram() {
   askForName();
