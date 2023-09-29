@@ -19,7 +19,7 @@ let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-  candidateName = input.question("Please enter your name?");
+  candidateName = input.question("What is your name?");
 }
 
 function askQuestion() {
@@ -32,28 +32,22 @@ function askQuestion() {
 };
 
 function gradeQuiz(candidateAnswers) {
-  let grade = 0;
+  
   let numOfCorrectAnswers = 0;
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
   
   for(let i = 0; i < candidateAnswers.length; i++){
     if ((correctAnswers[i]).toLowerCase() === (candidateAnswers[i]).toLowerCase()){
-      console.log(`Candidate's correct response is ${candidateAnswers[i]} and the correct response was ${correctAnswers[i]}`);
-    } else {
-      console.log(`Candidate's incorrect response is ${candidateAnswers[i]} and the correct response was ${correctAnswers[i]}`);
-  }
-}
-
-  for(let i = 0; i < candidateAnswers.length; i++){
-
-    if ((correctAnswers[i]).toLowerCase() === (candidateAnswers[i]).toLowerCase()){
       numOfCorrectAnswers += 1
-      grade = (numOfCorrectAnswers / questions.length) * 100;  
-
     }
+
+     console.log(`${i+1} ${questions[i]}`);
+      console.log(`Candidate's response is ${candidateAnswers[i]} and the correct response was ${correctAnswers[i]}`);  
+    
   }
 
 
+  let grade = (numOfCorrectAnswers / questions.length) * 100;  
 
   if (grade >= 80){
     console.log(`Congrulations, you have passed with a ${grade}!`);
@@ -73,11 +67,21 @@ function gradeQuiz(candidateAnswers) {
 
 
 function runProgram() {
+  
   askForName();
-  // TODO 1.1c: Greet candidate using their name //
-   console.log("Greetings " + candidateName );
-  askQuestion();
-  gradeQuiz(this.candidateAnswers);
+      console.log("Greetings " + candidateName );
+  
+  // let answersAndQuestions = "";
+
+  for(let i = 0; i < correctAnswers.length; i++){
+    
+    askQuestion();
+    gradeQuiz(this.candidateAnswers);
+
+    return;
+
+   } 
+
 }
 
 // ----------- Don't write any code or change any code below this line ---------- //
